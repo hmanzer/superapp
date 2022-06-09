@@ -1,7 +1,7 @@
 # superapp
 
 ## json-processing.py
-The lambda function is event driven. It picks up files named .json expected to be 'product' and puts them in dynamodb table.
+The lambda function is event driven. It picks up files named .json expected to be 'product' from an S3 bucket and puts them in dynamodb table.
 
 ```json
 {
