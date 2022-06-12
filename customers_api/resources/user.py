@@ -41,7 +41,7 @@ class User(Resource):
             return user_schema.dump(user_data), 200
 
     @user_ns.expect(user)
-    @user_ns.doc('Create an User')
+    @user_ns.doc('Create a user')
 
     def post(self):
         user_json = request.get_json()
