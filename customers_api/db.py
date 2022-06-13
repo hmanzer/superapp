@@ -2,8 +2,8 @@ from flask_sqlalchemy import SQLAlchemy
 from os import environ
 from dotenv import load_dotenv, find_dotenv
 from pathlib import Path
-
-load_dotenv(find_dotenv())
+dotenv_path = '../.env'
+load_dotenv(dotenv_path)
 
 db = SQLAlchemy()
 
