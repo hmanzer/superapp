@@ -2,10 +2,8 @@
 # superapp
 
 
-## .env for mysql container and flask-mysql in parent folder.
+## Environment Variables for and flask-mysql in parent folder.
 
-DB_USERNAME=<br>
-DB_PASSWORD=<br>
 DB_PORT=<br>
 DB_NAME=<br>
 DB_HOST=<br>
@@ -13,6 +11,21 @@ MYSQL_ROOT_PASSWORD=<br>
 MYSQL_DATABASE=<br>
 MYSQL_USER=<br>
 MYSQL_PASSWORD=<br>
+
+### secret_mysql.yml <br>
+```
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-secrets
+type: Opaque
+stringData:
+  db_root_password: 
+  database: 
+  username: 
+  password: 
+  ```
 
  
 ## Docker-compose for development enviroment
