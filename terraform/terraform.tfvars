@@ -1,0 +1,11 @@
+credentials        = "~/terraform-gkecluster-superapp-keyfile.json"
+project_id         = "sacred-sol-210014"
+region             = "asia-southeast1"
+zones              = ["asia-southeast1-a", "asia-southeast1-b", "asia-southeast1-c"]
+name               = "superapp-gke-cluster"
+machine_type       = "e2-small"
+min_count          = 1
+max_count          = 2
+disk_size_gb       = 10
+service_account    = "iac-gke-superapp@sacred-sol-210014.iam.gserviceaccount.com"
+initial_node_count = 1

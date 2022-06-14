@@ -17,8 +17,8 @@ spec:
     spec:
       containers:
         - name: customer-api
-          image: cusapi
-          imagePullPolicy: Never
+          image: gcr.io/sacred-sol-210014/cusapi:0.0.1
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5000
           env:

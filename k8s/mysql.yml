@@ -1,32 +1,31 @@
 # mysql.yaml
-
---- 
-apiVersion: v1
-kind: PersistentVolume
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
 metadata:
-  name: mysql-pv-volume
-  labels:
-    type: local
-spec:
-  storageClassName: manual
-  capacity:
-    storage: 2Gi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/data/db"
+  name: gold
+provisioner: kubernetes.io/gce-pd
+volumeBindingMode: Immediate
+allowVolumeExpansion: true
+reclaimPolicy: Delete
+parameters:
+  type: pd-standard
+  fstype: ext4
+  replication-type: none
+
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mysql-pv-claim
 spec:
-  storageClassName: manual
+  storageClassName: gold
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 2Gi
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -46,8 +45,8 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: mysql:8.0.29
-        imagePullPolicy: Never
+        image: gcr.io/sacred-sol-210014/mysql:8.0.29
+        imagePullPolicy: IfNotPresent
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
