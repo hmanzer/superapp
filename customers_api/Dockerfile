@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.10-slim
 
 RUN pip3 install pipenv
 
@@ -14,4 +14,4 @@ RUN pipenv install --deploy --ignore-pipfile
 
 EXPOSE 5000
 
-CMD ["pipenv", "run", "python", "app.py"]
+CMD ["pipenv", "run", "python", "api.py"]
